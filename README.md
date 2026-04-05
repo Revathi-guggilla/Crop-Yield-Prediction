@@ -22,28 +22,45 @@ Target:
 Yield (Production)
 
 ⚙️ Technologies Used
+
 Python
+
 Pandas
+
 NumPy
+
 Matplotlib
+
 Seaborn
+
 Scikit-learn
 
 🔄 Project Workflow
+
 Load dataset
+
 Data preprocessing (cleaning & encoding)
+
 Exploratory Data Analysis (EDA)
+
 Train regression model (Random Forest Regressor)
+
 Evaluate model performance
+
 Visualize results
+
 Provide farmer recommendations
 
 🤖 Model Used
+
 Random Forest Regressor
 
 📊 Model Performance
+
 Mean Absolute Error (MAE): ~3538
+
 Mean Squared Error (MSE): ~97,721,178
+
 R² Score: ~0.98
 
 📈 Output Visualizations
