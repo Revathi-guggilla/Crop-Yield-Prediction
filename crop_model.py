@@ -24,15 +24,13 @@ print(data.head())
 # Handle missing values
 data = data.dropna()
 
-# Encode categorical columns
-le = LabelEncoder()
+# Drop unnecessary columns
+data = data.drop("Unnamed: 0", axis=1)
 
-for col in data.columns:
-    if data[col].dtype == 'object':
-        data[col] = le.fit_transform(data[col])
+# Encode categorical columns using one-hot encoding for better performance
+data = pd.get_dummies(data, columns=['Area', 'Item'], drop_first=True)
 
 # Separate features & target
-# Change 'yield' if column name different
 X = data.drop("hg/ha_yield", axis=1)
 y = data["hg/ha_yield"]
 
@@ -46,13 +44,13 @@ plt.figure()
 sns.scatterplot(x=data['average_rain_fall_mm_per_year'], y=data['hg/ha_yield'])
 plt.title("Rainfall vs Yield")
 plt.savefig("rainfall_vs_yield.png")
-plt.show()
+# plt.show()  # Removed to avoid blocking in terminal
 
 plt.figure()
 sns.scatterplot(x=data['avg_temp'], y=data['hg/ha_yield'])
 plt.title("Temperature vs Yield")
 plt.savefig("temp_vs_yield.png")
-plt.show()
+# plt.show()  # Removed to avoid blocking in terminal
 
 # 5. Train-Test Split
 
@@ -62,7 +60,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # 6. Model Training
 
-model = RandomForestRegressor(n_estimators=50)
+model = RandomForestRegressor(n_estimators=20, random_state=42)
 model.fit(X_train, y_train)
 
 print("Model Trained ✅")
@@ -90,7 +88,7 @@ plt.xlabel("Actual Yield")
 plt.ylabel("Predicted Yield")
 plt.title("Actual vs Predicted Yield")
 plt.savefig("actual_vs_predicted.png")
-plt.show()
+# plt.show()  # Removed to avoid blocking in terminal
 
 # 10. Farmer Recommendation
 
