@@ -81,14 +81,19 @@ Actual vs Predicted Yield
 
 
 🌾 Farmer Recommendations
+
 High rainfall conditions: Rice, Sugarcane
+
 Moderate rainfall: Wheat, Maize
+
 High temperature: Cotton, Groundnut
+
 Moderate temperature: Wheat, Barley
 
 🚀 How to Run
 
 pip install pandas numpy matplotlib seaborn scikit-learn
+
 python crop_model.py
 
 📌 Conclusion
